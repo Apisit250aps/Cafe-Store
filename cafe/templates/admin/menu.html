@@ -1,0 +1,63 @@
+{% extends 'admin/index.html' %}
+
+{% block content %}
+
+
+<form action="" method="post" class="form-group w-100 align-items-start d-flex flex-column justify-content-center">
+
+    <table class="table">
+        <style>
+            label {
+                text-transform: capitalize;
+            }
+        </style>
+        <tr>
+            <td><label for="menu">Menu</label></td>
+            <td> <input type="text" name="menu" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="cat">Category</label></td>
+            <td><select name="cat" id="" class="form-control text-capitalize">
+                    {% for cat in category %}
+                    <option value="{{cat.category}}" class="text-capitalize">{{cat.category}}</option>
+                    {% endfor %}
+                </select></td>
+        </tr>
+        <tr>
+            <td><label for="desc"></label>Description</td>
+            <td> <textarea name="description" id="" cols="30" rows="3" class="form-control"></textarea></td>
+        </tr>
+        <tr>
+            <td><label for="">Price</label></td>
+            <td><input type="number" name="price" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="">S-Price</label></td>
+            <td> <input type="number" name="s-price" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="">M-Price</label></td>
+            <td> <input type="number" name="m-price" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="">L-Price</label></td>
+            <td> <input type="number" name="s-price" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="">Picture</label></td>
+            <td> <input type="file" name="picture" id="" class="form-control"></td>
+        </tr>
+        <tr>
+            <td colspan="2" spellcheck="false" class="">
+                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-success">Save</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+
+
+
+{% endblock content %}
