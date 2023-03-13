@@ -5,6 +5,4 @@ from django.http import HttpRequest, HttpResponse
 
 
 def homepage(request):
-    
-    
     return render(request, 'cafe/home.html')
