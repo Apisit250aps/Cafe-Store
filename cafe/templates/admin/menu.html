@@ -3,8 +3,8 @@
 {% block content %}
 
 
-<form action="" method="post" class="form-group w-100 align-items-start d-flex flex-column justify-content-center">
-
+<form action="{% url 'add-menu' %}" enctype="multipart/form-data" method="post" class="form-group w-100 align-items-start d-flex flex-column justify-content-center">
+    {% csrf_token %}
     <table class="table">
         <style>
             label {
@@ -41,11 +41,11 @@
         </tr>
         <tr>
             <td><label for="">L-Price</label></td>
-            <td> <input type="number" name="s-price" id="" class="form-control"></td>
+            <td> <input type="number" name="l-price" id="" class="form-control"></td>
         </tr>
         <tr>
             <td><label for="">Picture</label></td>
-            <td> <input type="file" name="picture" id="" class="form-control"></td>
+            <td> <input type="file" accept='image/' name="picture" id="" class="form-control"></td>
         </tr>
         <tr>
             <td colspan="2" spellcheck="false" class="">
