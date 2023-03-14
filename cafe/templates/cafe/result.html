@@ -1,0 +1,106 @@
+{% extends 'cafe/index.html' %}
+
+{% block content %}
+<style>
+    .items {
+        width: 100%;
+        display: inline-block;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+
+
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 100%;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: white;
+        border-radius: 25px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: lightgray;
+        border-radius: 25px;
+        width: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #f1f1f1;
+
+    }
+
+    .card > img {
+        padding: 1rem;
+        width: 200px;
+        height: 150px;
+    }
+
+    .cat-title {
+
+        text-transform: capitalize;
+    }
+</style>
+<div class="p-2">
+    <div class="my-2 alert alert-dark d-flex justify-content-center" role="alert">
+        <strong>Search for "{{key}}"</strong>
+    </div>
+
+    <section class="items ">
+        {% for items in results %}
+        <div class="card d-inline-block">
+            <img src="/media/{{items.picture}}" alt="" class="">
+            <div class="p-3 d-flex flex-column card-body">
+                <span class="d-flex flex-row justify-content-between align-items-baseline">
+                    <strong class=" card-title">{{items.menu.capitalize}}</strong>
+
+                </span>
+                <span class="justify-content-between d-flex card-text">
+                    <p>{{items.category}}</p>
+                    <b>{{items.price}} ฿</b>
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </section>
+    <hr>
+    
+    <div class=" w-100 p-2 border">
+        <strong class="cat-title">more</strong>
+        <hr>
+        <div class="items  p-2">
+            {% for items in more %}
+            <div class="card d-inline-block" >
+                <img src="/media/{{items.picture}}" alt="" class="card-img-top">
+                <div class="p-3 d-flex flex-column card-body">
+                    <span class="d-flex flex-row justify-content-between align-items-baseline">
+                        <strong class=" card-title">{{items.menu}}</strong>
+
+                    </span>
+                    <span class="justify-content-between d-flex card-text">
+                        <p>{{items.category}}</p>
+                        <b>{{items.price}} ฿</b>
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock content %}

@@ -23,13 +23,14 @@ from manager import views as manage
 from cafe import views as cafe
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('manage/', manage.dashboard, name='dashboard'),
     path('manege/menu', manage.menu, name='menu'),
     path('manage/menu/add', manage.addMenu, name='add-menu'),
     path('manage/menu/del', manage.menuDelete, name='del'),
     path('manage/menu/edit', manage.menuEdit, name='edit'),
-    path('', cafe.homepage, name='home')
+    path('', cafe.homepage, name='home'),
+    path('result/', cafe.search, name='search')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<nav class="">
+<nav class="d-inline-flex">
     <!-- Modal trigger button -->
     <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#add-menu">
         Add menu
@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td><label for="">Picture</label></td>
-                            <td> <input type="file" accept='image/' name="picture" id="" class="form-control"></td>
+                            <td> <input type="file" accept='image' name="picture" id="" class="form-control"></td>
 
                         </tr>
                         <tr>
@@ -79,7 +79,7 @@
     </script>
 </nav>
 
-<table class="table table-bordered table-hover">
+<table class="table d-inline-block-flex table-bordered table-hover">
     <thead class=" bg-dark text-white">
 
         <td>Menu</td>
@@ -94,121 +94,136 @@
             action
         </td>
     </thead>
-    <tbody>
-        {% for items in menu %}
-        <tr>
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+        .page {
+            overflow-y: scroll;
+        }
+        tbody {
+            
+        }
+    </style>
+    <div class="page">
+        <tbody class="">
+            {% for items in menu %}
+            <tr>
 
-            <td>{{items.menu}}</td>
-            <td>{{items.category}}</td>
-            <td>{{items.price}}</td>
-            <td>{{items.s_price}}</td>
-            <td>{{items.m_price}}</td>
-            <td>{{items.l_price}}</td>
-            <td>{{items.description}}</td>
-            <td><a href="/media/{{items.picture}}" target="blank">{{items.picture}}</a></td>
-            <td>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#del-menu{{items.id}}">
-                    Delete
-                </button>
+                <td>{{items.menu}}</td>
+                <td>{{items.category}}</td>
+                <td>{{items.price}}</td>
+                <td>{{items.s_price}}</td>
+                <td>{{items.m_price}}</td>
+                <td>{{items.l_price}}</td>
+                <td>{{items.description}}</td>
+                <td><a href="/media/{{items.picture}}" target="blank">{{items.picture}}</a></td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#del-menu{{items.id}}">
+                        Delete
+                    </button>
 
-                <!-- Modal Body -->
-                <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                <div class="modal fade" id="del-menu{{items.id}}" tabindex="-1" data-bs-backdrop="static"
-                    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalTitleId">Delete Menu</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <strong>You need to delete '{{items.menu}}'?</strong>
-                            </div>
-                            <div class="modal-footer">
-                                <form action="{% url 'del' %}" method="post">
-                                    {% csrf_token %}
+                    <!-- Modal Body -->
+                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                    <div class="modal fade" id="del-menu{{items.id}}" tabindex="-1" data-bs-backdrop="static"
+                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                            role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitleId">Delete Menu</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <strong>You need to delete '{{items.menu}}'?</strong>
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{% url 'del' %}" method="post">
+                                        {% csrf_token %}
 
-                                    <input type="hidden" name="id" value="{{items.id}}">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-danger">Confirm</button>
-                                </form>
+                                        <input type="hidden" name="id" value="{{items.id}}">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Confirm</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Optional: Place to the bottom of scripts -->
-                <script>
-                    const del = new bootstrap.Modal(document.getElementById('del-menu{{items.id}}'), options)
-                </script>
-                <!-- Modal trigger button -->
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal"
-                    data-bs-target="#edit-{{items.id}}">
-                    Edit
-                </button>
-                <!-- Modal Body -->
-                <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                <div class="modal fade" id="edit-{{items.id}}" tabindex="-1" data-bs-backdrop="static"
-                    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <strong>Edit {{items.menu}}</strong>
+                    <!-- Optional: Place to the bottom of scripts -->
+                    <script>
+                        const del = new bootstrap.Modal(document.getElementById('del-menu{{items.id}}'), options)
+                    </script>
+                    <!-- Modal trigger button -->
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                        data-bs-target="#edit-{{items.id}}">
+                        Edit
+                    </button>
+                    <!-- Modal Body -->
+                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                    <div class="modal fade" id="edit-{{items.id}}" tabindex="-1" data-bs-backdrop="static"
+                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg"
+                            role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <strong>Edit {{items.menu}}</strong>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{% url 'edit' %}" method="post" enctype="multipart/form-data"
+                                        class="form-group edit d-flex flex-column p-3">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="id" value="{{items.id}}">
+                                        <input type="text" name="menu" value="{{items.menu}}" id=""
+                                            class="form-control my-1">
+                                        <select name="cat" id="" class="form-control text-capitalize my-1">
+                                            <option value="uncategory">Uncategory</option>
+                                            {% for cat in category %}
+                                            <option value="{{cat.category}}" class="text-capitalize">{{cat.category}}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                        <input type="number" name="price" id="" value="{{items.price}}"
+                                            class="form-control my-1">
+                                        <input type="number" name="s-price" id="" value="{{items.s_price}}"
+                                            class="form-control my-1">
+                                        <input type="number" name="m-price" id="" value="{{items.m_price}}"
+                                            class="form-control my-1">
+                                        <input type="number" name="l-price" id="" value="{{items.l_price}}"
+                                            class="form-control my-1">
+                                        <textarea name="" id="desc" cols="30" rows="3"
+                                            class="form-control my-1"></textarea>
+
+                                        <input class="form-control my-1" type="file" accept="image" name="new-picture"
+                                            id="">
+                                        <hr>
+                                        <div class="w-100 d-flex flex-row justify-content-end">
+                                            <button type="reset" data-bs-dismiss="modal" class="btn btn-danger mx-1">
+                                                cancel
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                Edit
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                </div>
+
                             </div>
-                            <div class="modal-body">
-
-                                <form action="{% url 'edit' %}" method="post" enctype="multipart/form-data"
-                                    class="form-group edit d-flex flex-column p-3">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="id" value="{{items.id}}">
-                                    <input type="text" name="menu" value="{{items.menu}}" id=""
-                                        class="form-control my-1">
-                                    <select name="cat" id="" class="form-control text-capitalize my-1">
-                                        <option value="uncategory">Uncategory</option>
-                                        {% for cat in category %}
-                                        <option value="{{cat.category}}" class="text-capitalize">{{cat.category}}
-                                        </option>
-                                        {% endfor %}
-                                    </select>
-                                    <input type="number" name="price" id="" value="{{items.price}}"
-                                        class="form-control my-1">
-                                    <input type="number" name="s-price" id="" value="{{items.s_price}}"
-                                        class="form-control my-1">
-                                    <input type="number" name="m-price" id="" value="{{items.m_price}}"
-                                        class="form-control my-1">
-                                    <input type="number" name="l-price" id="" value="{{items.l_price}}"
-                                        class="form-control my-1">
-                                    <textarea name="" id="desc" cols="30" rows="3" class="form-control my-1"></textarea>
-                                    <a href="/media/{{items.picture}}" class="nav-link"
-                                        target="blank">{{items.picture}}</a>
-                                    <input class="form-control my-1" type="file" accept="image/" name="new-picture"
-                                        id="">
-                                    <hr>
-                                    <div class="w-100 d-flex flex-row justify-content-end">
-                                        <button type="reset" data-bs-dismiss="modal" class="btn btn-danger mx-1">
-                                            cancel
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">
-                                            Edit
-                                        </button>
-
-                                    </div>
-                                </form>
-                            </div>
-
                         </div>
                     </div>
-                </div>
-                <!-- Optional: Place to the bottom of scripts -->
-                <script>
-                    const edit = new bootstrap.Modal(document.getElementById('edit-{{items.id}}'), options)
-                </script>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
+                    <!-- Optional: Place to the bottom of scripts -->
+                    <script>
+                        const edit = new bootstrap.Modal(document.getElementById('edit-{{items.id}}'), options)
+                    </script>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </div>
 </table>
 
 {% endblock content %}

@@ -8,15 +8,18 @@ import random
 # Create your views here.
 
 
+
 def menuEdit(request):
+    
     var_id = request.POST.get('id')
     var_menu = request.POST.get('menu', None)
     var_cat = request.POST.get('cat', None)
-    var_desc = request.POST.get('description', None)
+    var_desc = request.POST.get('desc', None)
     var_price = request.POST.get('price', 0)
     var_s_price = request.POST.get('s-price', 0)
     var_m_price = request.POST.get('m-price', 0)
     var_l_price = request.POST.get('l-price', 0)
+    
     df_picture = Menu.objects.get(id=var_id).picture
 
     var_picture = df_picture
@@ -65,6 +68,7 @@ def dashboard(request):
 
 
 def menu(request):
+    print(request.user)
 
     value = {
         'title': 'Add menu',
@@ -87,6 +91,8 @@ def addMenu(request):
 
     picture = request.FILES['picture']
     print(picture)
+    
+    
 
     if os.path.exists(f'media/menu/{picture.name}'):
         sp = picture.name.split('.', 1)
