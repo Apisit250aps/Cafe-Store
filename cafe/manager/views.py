@@ -23,7 +23,7 @@ def dashboard(request):
     value = {
         'title': "Dashboard"
     }
-    return render(request, 'admin/dashboard.html', value)
+    return render(request, 'manager/dashboard.html', value)
 
 
 def menu(request):
@@ -34,7 +34,7 @@ def menu(request):
         'menu': Menu.objects.all()
 
     }
-    return render(request, 'admin/menu.html', value)
+    return render(request, 'manager/menu.html', value)
 
 
 def addMenu(request):

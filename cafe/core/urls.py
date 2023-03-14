@@ -19,8 +19,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from manager import views as manage
 from cafe import views as cafe
-from admin import views as manage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
