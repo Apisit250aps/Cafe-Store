@@ -8,13 +8,12 @@ class Menu(models.Model):
     category = models.CharField(max_length=64)
     picture = models.ImageField(upload_to='menu/')
     description = models.TextField(null=True)
-    price = models.FloatField(null=True)
-    s_price = models.FloatField(null=True)
-    m_price = models.FloatField(null=True)
-    l_price = models.FloatField(null=True)
-    sold = models.PositiveIntegerField(null=True)
-    rating = models.IntegerField(null=True)
-
+    price = models.FloatField(null=True, default=0)
+    s_price = models.FloatField(null=True, default=0)
+    m_price = models.FloatField(null=True, default=0)
+    l_price = models.FloatField(null=True, default=0)
+    sold = models.PositiveIntegerField(null=True, default=0)
+    rating = models.IntegerField(null=True, default=0)
 
 class Categories(models.Model):
     category = models.CharField(max_length=64)

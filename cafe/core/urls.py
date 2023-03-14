@@ -28,6 +28,7 @@ urlpatterns = [
     path('manege/menu', manage.menu, name='menu'),
     path('manage/menu/add', manage.addMenu, name='add-menu'),
     path('manage/menu/del', manage.menuDelete, name='del'),
+    path('manage/menu/edit', manage.menuEdit, name='edit'),
     path('', cafe.homepage, name='home')
 ]
 
