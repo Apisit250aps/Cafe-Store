@@ -59,7 +59,9 @@
             <img src="/media/{{items.picture}}" alt="" class="">
             <div class="p-3 d-flex flex-column card-body">
                 <span class="d-flex flex-row justify-content-between align-items-baseline">
-                    <strong class=" card-title">{{items.menu.capitalize}}</strong>
+                    <a href="/detail/?id={{items.id}}" class="nav-link">
+                        <strong class=" card-title">{{items.menu.capitalize}}</strong>
+                    </a>
 
                 </span>
                 <span class="justify-content-between d-flex card-text">
@@ -85,7 +87,9 @@
                 <img src="/media/{{items.picture}}" alt="" class="card-img-top">
                 <div class="p-3 d-flex flex-column card-body">
                     <span class="d-flex flex-row justify-content-between align-items-baseline">
-                        <strong class=" card-title">{{items.menu}}</strong>
+                        <a href="/detail/?id={{items.id}}" class="nav-link">
+                            <strong class=" card-title">{{items.menu.capitalize}}</strong>
+                        </a>
                     </span>
                     <span class="justify-content-between d-flex card-text">
                         <a href="/result/?search={{items.category}}" class="nav-link">

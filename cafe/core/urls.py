@@ -34,6 +34,7 @@ urlpatterns = [
     path('manage/menu/edit', manage.menuEdit, name='edit'),
     path('', cafe.homepage, name='home'),
     path('result/', cafe.search, name='search'),
+    path('detail/', cafe.detail, name='detail')
     
 ]
 

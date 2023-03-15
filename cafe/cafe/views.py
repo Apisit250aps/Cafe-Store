@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate
 from django.http import HttpRequest, HttpResponse
 from .models import *
 
@@ -43,3 +44,17 @@ def search(request):
     }
     
     return render(request, 'cafe/result.html', value)
+
+
+def detail(request):
+    print(request.user.is_authenticated)
+    
+    value = {
+        
+        
+    }
+    key  = request.GET.get('id')
+    value['detail'] = Menu.objects.filter(id=key)
+    
+    
+    return render(request, 'cafe/detail.html', value)

@@ -1,0 +1,88 @@
+{% extends 'cafe/index.html' %}
+
+{% block content %}
+<style>
+    .detail>img {
+        width: 50%;
+        height: 50%;
+    }
+</style>
+<div class="p-2 ">
+
+    <div class="detail border rounded-4 p-2 d-flex  flex-row">
+        {% for details in detail %}
+        <img src="/media/{{details.picture}}" class="" alt="">
+        <div class="detail-text p-3 w-100 d-flex flex-column">
+            <span class="">
+                <strong>{{details.menu}}</strong>
+                <p>{{details.category}}</p>
+                <p>{{details.price}} ฿</p>
+            </span>
+
+
+
+        </div>
+        <div class="">
+            <!-- Modal trigger button -->
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalId{{details.id}}">
+                Buy
+            </button>
+
+            <!-- Modal Body -->
+            <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+            <div class="modal fade" id="modalId{{details.id}}" tabindex="-1" data-bs-backdrop="static"
+                data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+
+                    <form action="" method="get" class="modal-content">
+                        <div class="modal-header">
+                            <h5>Buy {{details.menu}}</h5>
+                        </div>
+                        <div class="modal-body d-flex flex-row">
+                            <select name="size" id="" class="form-control">
+                                {% if details.price != 0  %}
+                                <option value="{{details.price}}">S</option>
+                                {% endif %}
+                                {% if details.s_price != 0  %}
+                                <option value="{{details.price}}">S</option>
+                                {% endif %}
+                                {% if details.m_price != 0  %}
+                                <option value="{{details.price}}">M</option>
+                                {% endif %}
+                                {% if details.l_price != 0  %}
+                                <option value="{{details.price}}">L</option>
+                                {% endif %}
+                            </select>
+                            <select name="type" id="" class="form-control">
+                                <option value="cold">Cold</option>
+                                <option value="hot">Hot</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" data-bs-dismiss="modal" class="btn btn-outline-dark">Cancel</button>
+                            <button type="submit" class="btn btn-dark">Buy</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+
+            <!-- Optional: Place to the bottom of scripts -->
+            <script>
+                const myModal = new bootstrap.Modal(document.getElementById('modalId{{details.id}}'), options)
+
+            </script>
+
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+</div>
+
+
+
+{% endblock content %}
