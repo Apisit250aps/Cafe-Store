@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers, serializers, viewsets
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 from manager import views as manage
 from cafe import views as cafe
+
+from api import views as api
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -30,7 +33,8 @@ urlpatterns = [
     path('manage/menu/del', manage.menuDelete, name='del'),
     path('manage/menu/edit', manage.menuEdit, name='edit'),
     path('', cafe.homepage, name='home'),
-    path('result/', cafe.search, name='search')
+    path('result/', cafe.search, name='search'),
+    
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
