@@ -36,13 +36,11 @@ def search(request):
         # results = Menu.objects.filter(menu__contains=key, category__contains=key)
     else :
         return redirect('/')
-        
     value = {
         "results":results,
         "more":Menu.objects.all(),
         "key":key
     }
-    
     return render(request, 'cafe/result.html', value)
 
 

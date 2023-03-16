@@ -16,6 +16,8 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
@@ -104,9 +106,36 @@
             <a href="" class="nab-link"></a>
 
         </nav>
+        <script>
+            function get(){
+                console.log('hello')
+                axios({
+                    url: 'http://127.0.0.1:8000/api/get?format=json',
+                    method: 'get',
+                    timeout: 3000,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    
+    
+                })
+                
+            }
+    
+        </script>
+
 
     </header>
+   <div id="display">
+    Hell
+   </div>
+
+   <script>
+    var dp = document.getElementById('display')
+
+dp.textContent = 'Hello'
+   </script>
     
+
+
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
     {% block content %}
 
