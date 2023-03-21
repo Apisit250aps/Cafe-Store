@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="{% static 'assets/js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</head>
+
+<body class="d-flex container">
+    <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+                <stop stop-color="#381f18" offset="0%"></stop>
+                <stop stop-color="#381f18" offset="100%"></stop>
+            </linearGradient>
+        </defs>
+        <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)"
+            d="M0,294L21.8,245C43.6,196,87,98,131,106.2C174.5,114,218,229,262,228.7C305.5,229,349,114,393,89.8C436.4,65,480,131,524,204.2C567.3,278,611,359,655,375.7C698.2,392,742,343,785,294C829.1,245,873,196,916,220.5C960,245,1004,343,1047,343C1090.9,343,1135,245,1178,212.3C1221.8,180,1265,212,1309,261.3C1352.7,310,1396,376,1440,351.2C1483.6,327,1527,212,1571,204.2C1614.5,196,1658,294,1702,351.2C1745.5,408,1789,425,1833,359.3C1876.4,294,1920,147,1964,98C2007.3,49,2051,98,2095,98C2138.2,98,2182,49,2225,57.2C2269.1,65,2313,131,2356,179.7C2400,229,2444,261,2487,261.3C2530.9,261,2575,229,2618,245C2661.8,261,2705,327,2749,351.2C2792.7,376,2836,359,2880,367.5C2923.6,376,2967,408,3011,375.7C3054.5,343,3098,245,3120,196L3141.8,147L3141.8,490L3120,490C3098.2,490,3055,490,3011,490C2967.3,490,2924,490,2880,490C2836.4,490,2793,490,2749,490C2705.5,490,2662,490,2618,490C2574.5,490,2531,490,2487,490C2443.6,490,2400,490,2356,490C2312.7,490,2269,490,2225,490C2181.8,490,2138,490,2095,490C2050.9,490,2007,490,1964,490C1920,490,1876,490,1833,490C1789.1,490,1745,490,1702,490C1658.2,490,1615,490,1571,490C1527.3,490,1484,490,1440,490C1396.4,490,1353,490,1309,490C1265.5,490,1222,490,1178,490C1134.5,490,1091,490,1047,490C1003.6,490,960,490,916,490C872.7,490,829,490,785,490C741.8,490,698,490,655,490C610.9,490,567,490,524,490C480,490,436,490,393,490C349.1,490,305,490,262,490C218.2,490,175,490,131,490C87.3,490,44,490,22,490L0,490Z">
+        </path>
+    </svg>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <section id="" class="px-3" >
+        <img src="https://www.freepnglogos.com/uploads/coffee-logo-png/estella-revenge-stuff-week-coffee-confections-1.png" alt="" srcset="">
+        <form action="" method="get" id="loginForm" class="container d-flex flex-column">
+            <h3 class=" fw-bold">Hi, Welcome Back!</h3>
+            <p class="text-black-50"> Let's get somethings</p>
+            <label for="email" class="mx-2 fw-semibold text-black-50">Email</label>
+            <div id="inputBox">
+                <input type="email" name="" id="" placeholder="example@gmail.com">
+            </div>
+            <br>
+            <label for="password" class="mx-2 fw-semibold text-black-50">Password</label>
+            <div id="inputBox">
+                <input type="password" ref="passwordIn" name="" id="" placeholder="Enter Your Password">
+                <button type="button" class="btn d-flex align-items-center" @click="pwdShow()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                        <path
+                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                    </svg>
+                </button>
+            </div>
+            <br>
+            <div class="px-1 my-1 my-md-3 border-0 d-flex justify-content-between">
+                <span class="d-flex align-items-center">
+                    <input type="checkbox" name="" id="remember">
+                    <label for="remember" class="fw-bold mx-1">Remember Me</label>
+                </span>
+                <a href="" style="color: #381f18;" class="nav-link fw-semibold">Forgot Password?</a>
+            </div>
+            <button type="submit" id="login-btn" class="my-1 my-md-5">Login</button>
+            <span class="or mt-1 mt-md-3">
+                <hr>
+                <p>or continue with</p>
+                <hr>
+            </span>
+            <div id="iconBox" class="my-1 my-md-3">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                        class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                    </svg>
+                </button>
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                        class="bi bi-google" viewBox="0 0 16 16">
+                        <path
+                            d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
+                    </svg>
+                </button>
+
+            </div>
+            <span class=" sticky-bottom d-flex flex-row justify-content-center align-items-center">
+                <b class="mx-1">Don't have an account ? </b>
+                <a href="" class="mx-1 nav-link " style="color: #381f18;"> <b>Sign up</b></a>
+            </span>
+        </form>
+        <script type="module">
+            const { createApp } = Vue
+
+            createApp({
+                delimiters: ["[[", "]]"],
+                data() {
+                    return {
+
+                    }
+                },
+                mounted() {
+
+                },
+                methods: {
+                    pwdShow(){
+                        if (this.$refs['passwordIn'].type == 'password'){
+                            this.$refs['passwordIn'].type = 'text'
+
+                        }
+                        else {
+                            this.$refs['passwordIn'].type = 'password'
+
+                        }
+                    }
+                }
+            }).mount('#loginForm')
+
+        </script>
+
+
+
+
+    </section>
+
+</body>
+
+</html>
