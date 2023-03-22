@@ -1,97 +1,123 @@
-#inputBox {
-    align-items: center;
-    display: flex;
-    height: 3.5rem;
-    border-radius: 1rem;
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    padding: 0rem 1rem;
+.profileImg {
+    width: 50px;
+    height: 50px;
+}
+
+.profileInfo {
+    height: 1rem;
+}
+
+header {
+    padding-top: 2.5rem;
 
 }
 
-#inputBox>input {
+.h::after {
+    content: 'order ';
+    color: pink;
+}
+
+.searchBox {
+    height: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: white;
     width: 100%;
+    /* border: 2px solid rgba(0, 0, 0, 0.3); */
+    box-shadow: 0rem 0rem .5rem rgba(0, 0, 0, 0.1);
+    padding-right: 1rem;
+    margin-right: 1rem;
+
+}
+
+
+.searchBox>input,
+.searchBox>input:focus,
+.searchBox>input:active {
+    border: none;
     outline: none;
     background: none;
-    border: none;
-}
-
-#login-btn {
-    height: 3.5rem;
-    margin: 3rem 0rem;
-    border-radius: 1rem;
-    border: none;
-    outline: 1px solid pink;
-    background-color: pink;
-    color: white;
-    font-weight: 500;
-
-}
-
-.or {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    justify-content: space-around;
-
-}
-
-.or>p {
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-#iconBox {
-    display: inline-flex;
-    padding: 1rem;
-    justify-content: center;
-    margin: 1rem 0rem;
-
-
-}
-
-#iconBox>button {
-    border: none;
-    background: none;
-    margin: 1rem;
-}
-
-#wave {
-    position: absolute;
-    z-index: -1;
-    top: -1rem;
-    right: 0px;
-    left: 0px;
-}
-
-html,
-body {
-    max-width: 100%;
-    max-height: 100%;
     width: 100%;
-    height: 100%;
-    justify-content: center;
+
 }
 
-body {
-    padding: 2rem;
+#search::-webkit-search-cancel-button {
+    background: pink;
+    -webkit-appearance: none;
 }
 
-section {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 1rem;
-    width: 30rem;
+.icon {
     padding: 1rem;
-    box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.3);
 }
 
-section>img {
-    width: 200px;
-    height: 200px;
-    margin: 2rem;
-    
+#filter {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 1rem;
+    background-color: white;
+    border: none;
+    box-shadow: 0rem 0rem .5rem rgba(0, 0, 0, 0.1);
+}
+
+#category {
+    overflow: auto;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+#cats-item {
+    width: 7rem;
+    box-shadow: 0rem 0rem .5rem rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border-radius: 1rem;
+}
+
+.cats {
+    align-items: center;
+
+    flex-direction: column;
+    display: flex;
+    color: rgba(0, 0, 0, .75);
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.cats-img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.cat-text {
+    margin-top: 1rem;
+    text-transform: capitalize;
+
+}
+
+#cats-item {
+    margin-right: 1rem;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 1rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: pink;
+    border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 192, 203, 0.75);
 }
