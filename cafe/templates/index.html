@@ -85,67 +85,34 @@
     <!-- category -->
     
     <section id="category"  class="my-3 my-md-4 p-2 justify-content-md-center">
-        <a  class=" d-inline-block nav-link" id="cats-item">
+        <a v-for="item in menu"  class=" d-inline-block nav-link" id="cats-item">
             <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/coffee (1).png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Hot Coffee</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/iced-coffee.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Ice Coffee</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/coffee-cup.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Coffee Cup</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item" href="">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/latte.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Latte</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/bubbleTea.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Bubble Tea</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/green-tea.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Green Tea</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/tea-cup.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Tea</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/donut.png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Donut</b>
-            </div>
-        </a>
-        <a  class=" d-inline-block nav-link" id="cats-item">
-            <div class="cats">
-                <img src="{% static 'assets/img/categoryIcon/cake (2).png' %}" alt="" srcset="" class="cats-img">
-                <b class="cats-text">Cake</b>
+                <img :src="[[ item.categoryImg.substr(1) ]]" alt="" srcset="" class="cats-img">
+                <b class="cats-text">[[ item.category ]]</b>
             </div>
         </a>
     </section>
     <!-- end category -->
+    
 
-    <!-- script -->
+
+
+
+
+    
     <footer>
-
     </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- script -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script >
@@ -158,27 +125,20 @@
                     username: 'Apisit Saithong',
                     address: 'Sisaket',
                     profileImg: 'https://scontent.fnak4-2.fna.fbcdn.net/v/t1.6435-9/161610854_930459957780431_1053975476520696176_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHjMhoWRANfAm9ag4r0OPUDF9DHUda85WYX0MdR1rzlZvv-AcqIzDvdGDzacRExz2thWC_ded4CHCl88KaEL550&_nc_ohc=U691kd68CS8AX9ooP1O&_nc_ht=scontent.fnak4-2.fna&oh=00_AfA9nre5Jbxqg2dTEhtl1aepKdbvchPp0iGhYdmZgeM31Q&oe=6441E193',
-                    menu: [
-                        {
-                            id: 1,
-                            menu: 'latte',
-                            img: 'latte.png'
-                        },
-                        {
-                            id:2,
-                            menu:'bubble tea',
-                            img:'bubble-tea.png'
-
-                        }
-                    ]
+                    menu: null
 
                 }
             },
             mounted() {
-
+                axios 
+                    .get('http://127.0.0.1:8000/cafe/category/')
+                    .then( response => (this.menu = response.data))
+              
             },
             methods: {
-
+                getCategory(){
+                    
+                }
             }
         }).mount('#app')
 
