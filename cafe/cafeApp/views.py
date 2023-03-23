@@ -37,7 +37,7 @@ def getCategory(request):
     http_status = HTTP_200_OK
 
     # get thai province file
-    result = finders.find('data/thai_province.json')
+    # result = finders.find('data/thai_province.json')
 
     category = Category.objects.all()
     serializer = CategorySerializer(category, many=True)

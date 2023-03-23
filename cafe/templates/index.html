@@ -83,7 +83,6 @@
     </form>
     <!-- end search form -->
     <!-- category -->
-    
     <section id="category"  class="my-3 my-md-4 p-2 justify-content-md-center">
         <a v-for="item in menu"  class=" d-inline-block nav-link" id="cats-item">
             <div class="cats">
@@ -93,31 +92,13 @@
         </a>
     </section>
     <!-- end category -->
-    
-
-
-
-
-
-    
     <footer>
     </footer>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- script -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script >
         const { createApp } = Vue
-
         createApp({
             delimiters: ["[[", "]]"],
             data() {
@@ -126,14 +107,12 @@
                     address: 'Sisaket',
                     profileImg: 'https://scontent.fnak4-2.fna.fbcdn.net/v/t1.6435-9/161610854_930459957780431_1053975476520696176_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHjMhoWRANfAm9ag4r0OPUDF9DHUda85WYX0MdR1rzlZvv-AcqIzDvdGDzacRExz2thWC_ded4CHCl88KaEL550&_nc_ohc=U691kd68CS8AX9ooP1O&_nc_ht=scontent.fnak4-2.fna&oh=00_AfA9nre5Jbxqg2dTEhtl1aepKdbvchPp0iGhYdmZgeM31Q&oe=6441E193',
                     menu: null
-
                 }
             },
             mounted() {
                 axios 
                     .get('http://127.0.0.1:8000/cafe/category/')
                     .then( response => (this.menu = response.data))
-              
             },
             methods: {
                 getCategory(){
