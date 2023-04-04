@@ -8,4 +8,7 @@ from . import views as cafe
 
 urlpatterns = [
     path('category/', cafe.getCategory, name='category'),
+    path('provinces/', cafe.provinceThailand, name='prov'),
+    path('district/', cafe.districtThailand, name='dist'),
+    path('tambon/', cafe.tambonThailand, name='tamb'),
 ]

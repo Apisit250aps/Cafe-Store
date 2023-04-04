@@ -81,6 +81,7 @@
             </svg>
         </button>
     </form>
+    <a href="{% url 'prov' %}">prov</a>
     <!-- end search form -->
     <!-- category -->
     <section id="category"  class="my-3 my-md-4 p-2 justify-content-md-center">
@@ -113,6 +114,8 @@
                 axios 
                     .get('http://127.0.0.1:8000/cafe/category/')
                     .then( response => (this.menu = response.data))
+
+                    
             },
             methods: {
                 getCategory(){

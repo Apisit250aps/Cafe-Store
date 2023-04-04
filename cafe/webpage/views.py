@@ -10,3 +10,7 @@ def homepage(req):
 def login(req):
     
     return render(req, 'gate/login.html')
+
+def register(req):
+    
+    return render(req, 'gate/register.html')

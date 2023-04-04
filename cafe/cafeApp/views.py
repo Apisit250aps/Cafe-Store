@@ -1,19 +1,17 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 import json
-from django.shortcuts import render, redirect, get_object_or_404
-import os
-from rest_framework import viewsets, permissions
+import pytz
+from PIL import Image
+from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.staticfiles import finders
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.db.models import Q
+
 
 from .models import *
 from .serializers import *
@@ -36,10 +34,46 @@ def getCategory(request):
     msg = 'already get thai province'
     http_status = HTTP_200_OK
 
-    # get thai province file
-    # result = finders.find('data/thai_province.json')
-
     category = Category.objects.all()
     serializer = CategorySerializer(category, many=True)
     return Response(serializer.data)
-    # return Response({'status': True, 'message': msg, 'data': data}, status=http_status)
+
+
+@csrf_exempt
+@api_view(["GET", ])
+@permission_classes((AllowAny,))
+def provinceThailand(request):
+    data = {}
+    result = finders.find('data/thai_province.json')
+    with open(result, encoding="utf8") as f:
+        province = json.load(f)
+    
+    data = province.keys()
+    print(type(province))
+    return Response(data)
+
+@csrf_exempt
+@api_view(["POST" ])
+@permission_classes((AllowAny,))
+def districtThailand(request):
+    data = {}
+    result = finders.find('data/thai_province.json')
+    with open(result, encoding="utf8") as f:
+        province = json.load(f)
+    
+    data = province.keys()
+    print(type(province))
+    return Response(data)
+
+@csrf_exempt
+@api_view(["POST" ])
+@permission_classes((AllowAny,))
+def tambonThailand(request):
+    data = {}
+    result = finders.find('data/thai_province.json')
+    with open(result, encoding="utf8") as f:
+        province = json.load(f)
+    
+    data = province.keys()
+    print(type(province))
+    return Response(data)
