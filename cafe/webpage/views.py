@@ -2,15 +2,15 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def homepage(req):
+def homepage(request):
     
-    return render(req, 'index.html')
+    return render(request, 'index.html')
 
 
-def login(req):
+def login(request):
     
-    return render(req, 'gate/login.html')
+    return render(request, 'gate/login.html')
 
-def register(req):
+def register(request):
     
-    return render(req, 'gate/register.html')
+    return render(request, 'gate/register.html')

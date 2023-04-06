@@ -7,8 +7,8 @@ from django.conf.urls.static import static
 from . import views as cafe
 
 urlpatterns = [
-    path('category/', cafe.getCategory, name='category'),
-    path('provinces/', cafe.provinceThailand, name='prov'),
-    path('district/', cafe.districtThailand, name='dist'),
-    path('tambon/', cafe.tambonThailand, name='tamb'),
+    path('api/category/', cafe.getCategory, name='category'),
+    path('api/provinces/', cafe.provinceThailand, name='prov'),
+    path('api/district/', cafe.districtThailand, name='dist'),
+    path('api/tambon/', cafe.tambonThailand, name='tamb'),
 ]
