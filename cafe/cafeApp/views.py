@@ -25,6 +25,7 @@ from rest_framework.status import (
 
 # Create your views here.
 
+
 @csrf_exempt
 @api_view(["GET", ])
 @permission_classes((AllowAny,))
@@ -37,6 +38,7 @@ def getCategory(request):
     serializer = CategorySerializer(category, many=True)
     return Response(serializer.data)
 
+
 @csrf_exempt
 @api_view(["GET", ])
 @permission_classes((AllowAny,))
@@ -45,29 +47,31 @@ def provinceThailand(request):
     result = finders.find('data/thai_province.json')
     with open(result, encoding="utf8") as f:
         province = json.load(f)
-    
+
     data = province.keys()
     print(type(province))
     return Response(data)
 
+
 @csrf_exempt
-@api_view(["POST" ])
+@api_view(["POST", ])
 @permission_classes((AllowAny,))
 def districtThailand(request):
     data = {}
     result = finders.find('data/thai_province.json')
     with open(result, encoding="utf8") as f:
         province = json.load(f)
-   
+
     provinceSelect = request.data['province']
     print(provinceSelect)
-    
+
     data = province[provinceSelect].keys()
-   
-    return Response({"status":True, "data":data})
+
+    return Response({"status": True, "data": data})
+
 
 @csrf_exempt
-@api_view(["POST" ])
+@api_view(["POST", ])
 @permission_classes((AllowAny,))
 def tambonThailand(request):
     data = {}
@@ -77,7 +81,7 @@ def tambonThailand(request):
     provinceSelect = request.data['province']
     districtSelect = request.data['district']
     print(districtSelect)
-    
+
     data = province[provinceSelect][districtSelect]
-   
-    return Response({"status":True, "data":data})
+
+    return Response({"status": True, "data": data})
