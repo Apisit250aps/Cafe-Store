@@ -26,17 +26,35 @@
                 <td>จังหวัด</td>
                 <td>
                     <select name="" id="" class="form-control" v-model="provinceSelected"
-                        @change="ProvinceOnSelected()">
+                        @change="ProvinceOnSelected">
                         <option v-for='prov in provinces' :value="prov">[[ prov ]]</option>
+                    </select>
+                </td>
+            </tr>
+            <tr v-show="districts != null">
+                <td >อำเภอ</td>
+                <td>
+                    <select name="" id="" class="form-control" v-model="districtSelected"
+                        @change="DistrictOnSelected">
+                        <option v-for='dist in districts' :value="dist">[[ dist ]]</option>
+                    </select>
+                </td>
+            </tr>
+            <tr v-show="tambons != null">
+                <td >ตำบล</td>
+                <td>
+                    <select name="" id="" class="form-control" v-model="tambonSelected"
+                        @change="">
+                        <option v-for='tamb in tambons' :value="tamb">[[ tamb ]]</option>
                     </select>
                 </td>
             </tr>
         </table>
 
     </form>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
     <script type="module">
         const { createApp } = Vue
 
@@ -48,7 +66,7 @@
                     districts: null,
                     tambons: null,
 
-                    provinceSelected: null,
+                    provinceSelected: '',
                     districtSelected: '',
                     tambonSelected: '',
                 }
@@ -61,15 +79,29 @@
             },
             methods: {
                 ProvinceOnSelected() {
-                    form_data = new FormData();
+                    const form_data = new FormData();
                     form_data.append("province", this.provinceSelected);
                     form_data.append("csrfmiddlewaretoken", "{{csrf_token}}");
 
                     axios.post("{% url 'dist' %}", form_data).then((response) => {
-                        this.districts = response.data;
+                        this.districts = response.data['data'];
+                        console.log(response.data['data'])
                     });
                     console.log('selected', this.provinceSelected)
                     
+
+                },
+                DistrictOnSelected(){
+                    const form_data = new FormData();
+                    form_data.append("district", this.districtSelected);
+                    form_data.append("province", this.provinceSelected);
+                    form_data.append("csrfmiddlewaretoken", "{{csrf_token}}");
+
+                    axios.post("{% url 'tamb' %}", form_data).then((response) => {
+                        this.tambons = response.data['data'];
+                        console.log(response.data['data'])
+                    });
+                    console.log('selected', this.districtSelected)
 
                 }
             }

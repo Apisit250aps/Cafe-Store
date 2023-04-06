@@ -123,9 +123,9 @@
                     form_data.append("email", this.email);
                     form_data.append("password", this.password);
 
-                    axios.post("......", form_data).then((response) => {
+                    axios.post("{% url 'dist' %}", form_data).then((response) => {
                         if (response.data["status"] == true) {
-                            console.log(response.data);
+                            console.log("hello");
                         }
                     });
                 },
